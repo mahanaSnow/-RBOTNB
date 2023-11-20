@@ -1,2 +1,65 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="brand">RBOTNB</a>
+        <ul class="menu">
+          <li><a href="#">accueil</a></li>
+          <li><a href="#">Découvrir</a></li>
+           <li><a href="#">Contact</a></li>
+
+          <li class="btn-list-item">
+            <a href="#" class="btn btn-secondary">Sign Up</a>
+          </li>
+          <li class="btn-list-item">
+            <a href="#" class="btn btn-primary">Sign In</a>
+          </li>
+        </ul>
+        <div class="buttons">
+          <a href="#" class="btn btn-secondary">Sign Up</a>
+          <a href="#" class="btn btn-primary">Sign In</a>
+        </div>
+
+        <button class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+
+      <div class="header-body">
+        <div class="header-text">
+          <div>
+            <h1 class="title">
+               Louez l'intelligence artificielle <br>
+            </h1>
+            <!-- <hr style="width: 200px;"> -->
+            <p>
+              exlporez les possibilités de l'intelligence artificielle pour votre entreprise.
+            </p>
+            <div class="buttons">
+              <a href="#" class="btn btn-primary">
+                Découvrir
+              </a>
+              <a href="#" class="btn btn-secondary">
+                En savoir plus
+              </a>
+            </div>
+            <div class="stats">
+              <div>
+                <h2 class="counter" data-count="1200">1200+</h2>
+                <p>Happy Customers</p>
+              </div>
+              <div class="line"></div>
+              <div>
+                <h2 class="counter" data-count="600">600+</h2>
+                <p>Projects Completed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="banner">
+            <%= image_tag 'banner.png', alt: 'banner' %>
+        </div>
+      </div>
+    </div>
+  </header>
