@@ -1,0 +1,14 @@
+<!-- app/views/bots/show.html.erb -->
+<h1><%= @bot.name %></h1>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bot.description %>
+</p>
+
+<p>
+  <strong>Price per day:</strong>
+  <%= number_to_currency(@bot.price_per_day) %>
+</p>
+
+<%= link_to 'Back to List', bots_path %>
