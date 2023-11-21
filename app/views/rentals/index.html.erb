@@ -1,0 +1,11 @@
+<h1>My Rental </h1>
+
+<% @rentals.each do |rental| %>
+  <div>
+    <p><strong>Bot:</strong> <%= rental.bot.name %></p>
+    <p><strong>Status:</strong> <%= rental.status %></p>
+    <!-- Vous pouvez ajouter plus d'informations ici -->
+    <%= link_to 'Accept', accept_rental_path(rental), method: :patch %>
+    <%= link_to 'Decline', decline_rental_path(rental), method: :patch %>
+  </div>
+<% end %>

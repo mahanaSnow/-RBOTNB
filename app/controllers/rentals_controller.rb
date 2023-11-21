@@ -1,29 +1,41 @@
 # app/controllers/rentals_controller.rb
 class RentalsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_rental, only: [:accept, :decline]
 
   def index
-    @rentals = Rental.all
+    @rentals = current_user.rentals # Afficher les locations de l'utilisateur actuel
+  end
+
+  def show
   end
 
   def create
-    @rental = Rental.new(rental_params)
+    @rental = current_user.rentals.build(rental_params)
+    @rental.status = 'pending'
     if @rental.save
-      redirect_to rentals_path, notice: 'Rental was successfully created.'
+      redirect_to rentals_path, notice: 'Rental request was successfully created.'
     else
       render :new
     end
   end
 
   def accept
-    @rental.update(status: 'accepted')
-    # Additional logic for when a rental is accepted
-    redirect_to rentals_path, notice: 'Rental was successfully accepted.'
+    if @rental.update(status: 'accepted')
+      # Ajoutez ici toute logique supplémentaire nécessaire lors de l'acceptation d'une location
+      redirect_to rentals_path, notice: 'Rental was successfully accepted.'
+    else
+      redirect_to rentals_path, alert: 'Unable to accept the rental.'
+    end
   end
 
   def decline
-    @rental.update(status: 'declined')
-    redirect_to rentals_path, notice: 'Rental was successfully declined.'
+    if @rental.update(status: 'declined')
+      # Ajoutez ici toute logique supplémentaire nécessaire lors du refus d'une location
+      redirect_to rentals_path, notice: 'Rental was successfully declined.'
+    else
+      redirect_to rentals_path, alert: 'Unable to decline the rental.'
+    end
   end
 
   private

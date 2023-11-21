@@ -1,0 +1,35 @@
+<!-- app/views/devise/sessions/new.html.erb -->
+<div class="login-container">
+  <h2>Login</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "login-form" }) do |f| %>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "login-input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "login-input" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Login", class: "login-button" %>
+    </div>
+  <% end %>
+
+   <div class="alternative-login">
+    <%= link_to "Don't have an account? sign up", new_user_registration_path %>
+    <div class="social-buttons">
+      <%= button_to "#", class: "social-button google", method: :get do %>
+        <i class="fa-brands fa-google"></i>
+      <% end %>
+      <%= button_to "#", class: "social-button facebook", method: :get do %>
+        <i class="fa-brands fa-facebook-f"></i>
+      <% end %>
+      <%= button_to "#", class: "social-button linkedin", method: :get do %>
+        <i class="fa-brands fa-linkedin-in"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

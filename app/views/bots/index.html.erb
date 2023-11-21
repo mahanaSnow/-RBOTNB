@@ -1,37 +1,27 @@
-<!-- app/views/bots/index.html.erb -->
 <h1>Bots List</h1>
 
-<% @bots.each do |bot| %>
-  <div class="card-ten-container">
-    <div class="card-ten">
-      <div class="card-ten-left">
-        <div class="card-ten-overlay">
-          <!-- Remplacez par une image pertinente ou une image par défaut pour le bot -->
-          <img src="app/assets/images/profile2.jpg" alt="profile" class="ten-profile-img">
-          <h2><%= bot.price_per_day %>$/DAY</h2>
-          <p><%= bot.name %></p>
-          <div class="ten-buttons-left">
-            <%= link_to 'BOOK', bot_path(bot), class: 'card-ten-btn' %>
-          </div>
-          <div class="ten-arrow-btn ten-arrow-btn-left">
-            <i class="fas fa-angle-right fa-3x"></i>
-          </div>
-        </div>
-      </div>
-      <div class="card-ten-right">
-        <div class="ten-about">
-          <h2>About</h2>
-          <p><%= bot.description %></p>
-        </div>
-        <div class="ten-buttons-right">
-          <div class="ten-arrow-btn ten-arrow-btn-right">
-            <i class="fas fa-angle-left fa-3x"></i>
-          </div>
-          <%= link_to 'BOOK', bot_path(bot), class: 'card-ten-btn' %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price Per Day</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
 
-<!-- Ajoutez vos scripts et références CSS nécessaires ici -->
+  <tbody>
+    <% @bots.each do |bot| %>
+      <tr>
+        <td><%= bot.name %></td>
+        <td><%= bot.description %></td>
+        <td><%= bot.price_per_day %></td>
+        <td><%= link_to 'Show', bot %></td>
+        <td><%= link_to 'Edit', edit_bot_path(bot) %></td>
+        <td><%= button_to 'Destroy', bot, method: :delete, data: { confirm: 'Are you sure?' }%><td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Bot', new_bot_path %>
