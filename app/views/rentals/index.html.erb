@@ -1,10 +1,12 @@
-
-<% @rentals.each do |rental| %>
-  <div>
-    <p><strong>Bot:</strong> <%= rental.bot.name %></p>
-    <p><strong>Status:</strong> <%= rental.status %></p>
-    <!-- Vous pouvez ajouter plus d'informations ici -->
-    <%= link_to 'Accept', accept_rental_path(rental), method: :patch %>
-    <%= link_to 'Decline', decline_rental_path(rental), method: :patch %>
-  </div>
-<% end %>
+<div class="reservations-container">
+  <% @rentals.each do |rental| %>
+    <div class="rental-card">
+      <p class="bot-name"><strong>Bot:</strong> <%= rental.bot.name %></p>
+      <p class="status"><strong>Status:</strong> <%= rental.status %></p>
+      <div class="actions">
+        <%= link_to 'Accept', accept_rental_path(rental), method: :patch, class: 'btn-accept' %>
+        <%= link_to 'Decline', decline_rental_path(rental), method: :patch, class: 'btn-decline' %>
+      </div>
+    </div>
+  <% end %>
+</div>
