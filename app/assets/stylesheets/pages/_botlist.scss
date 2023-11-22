@@ -1,239 +1,626 @@
-// // /* Setting the font adding margin to card and font size */
-// // .card-ten-container {
-// //   font-family: Arial, Helvetica, sans-serif;
-// //   display: inline-block;
-// //   font-size: 16px;/* The card size can be chaged simply by changing the font size to another value, the card will keep its aspect ratio and wont break, but the media queries should be modified at the bottom of the css file to keep the full responsivness of the card*/
-// // }
-// // /* Sizing everything in the card so it doesnt change size when padding is added */
-// // .card-ten * {
-// //   box-sizing: border-box;
-// // }
-// // /* Styles for the card and shadow*/
-// // .card-ten {
-// //   width: 23em;
-// //   height: 31em;
-// //   position: relative;
-// //   overflow: hidden;
-// //   margin: 1em;/* gap between cards can be changed here*/
-// //   -webkit-box-shadow: 10px 10px 28px 0px rgba(0, 0, 0, 0.75);
-// //   -moz-box-shadow: 10px 10px 28px 0px rgba(0, 0, 0, 0.75);
-// //   box-shadow: 10px 10px 28px 0px rgba(0, 0, 0, 0.75);
-// // }
-// // .card-ten h2 {
-// //   color: #fff;
-// //   font-size: 2em;
-// //   font-weight: 400;
-// //   margin: 0.5em;
-// // }
-// // .card-ten-left,
-// // .card-ten-right {
-// //   width: 100%;
-// //   position: absolute;
-// //   text-align: center;
-// //   height: 100%;
-// //   transition: 0.5s;
-// // }
+:root {
+  --black: #22211d;
+  --white: #fff9d6;
+}
 
-// // /* Adding background image to left part of the card and positioning*/
-// // .card-ten-left {
-// //   background-image: url(app/assets/images/profile.jpg);
-// //   background-size: cover;
-// //   background-position: center;
-// //   position: relative;
-// //   top: 0;
-// //   left: 0;
-// // }
+.body {
+  background-color: #3a3a38;
+}
 
-// // /* Making the black overlay on background image */
-// // .card-ten-overlay {
-// //   position: absolute;
-// //   top: 0;
-// //   left: 0;
-// //   width: 100%;
-// //   height: 100%;
-// //   background: rgba(0, 0, 0, 0.7);
-// //   padding: 2.5em 1em;
-// // }
-// // /* Profile image size and border */
-// // .ten-profile-img {
-// //   height: 11em;
-// //   width: 11em;
-// //   border: 2px solid #e9e9e9;
-// //   border-radius: 50%;
-// // }
-// // /* paragraph below username color and margin */
-// // .card-ten-left p {
-// //   color: #FC7D22;
-// //   margin: 0;
-// // }
+.wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #3a3a38;
 
-// // /* Two buttons in bottom left size and position */
-// // .ten-buttons-left {
-// //   position: absolute;
-// //   bottom: -2em;
-// //   left: 0.6em;
-// //   width: 9.5em;
-// //   height: 7em;
-// // }
-// // /* Styles for buttons(border,padding...) */
-// // .card-ten-btn {
-// //   border: 3px solid #FC7D22;
-// //   color: #fff;
-// //   text-decoration: none;
-// //   font-weight: bold;
-// //   padding: 0.5em 1em;
-// //   transition: 0.3s;
-// //   display: block;
-// //   margin: 0.7em;
-// // }
-// // /* Styles for arrow button */
-// // .ten-arrow-btn {
-// //   border: 3px solid #FC7D22;
-// //   border-radius: 50%;
-// //   width: 4em;
-// //   height: 4em;
-// //   color: #fff;
-// //   padding-top: 0.2em;
-// //   cursor: pointer;
-// //   transition: 0.3s;
-// // }
-// // /* Positioning left arrow button */
-// // .ten-arrow-btn-left {
-// //   position: absolute;
-// //   bottom: 0.9em;
-// //   right: 0.9em;
-// // }
-// // /* Background for buttons when hovered over */
-// // .card-ten-btn:hover,
-// // .ten-arrow-btn:hover {
-// //   background: rgba(204, 204, 204, 0.3);
-// // }
-// // /* Right part of the card background and positioning */
-// // .card-ten-right {
-// //   background-color: #1c1c1c;
-// //   left: 23em;
-// //   top: 0;
-// //   overflow-y: scroll;
-// // }
-// // /* scrollbar width */
-// // .card-ten-right {
-// //   overflow-y: hidden;
-// //   overflow-x: hidden;
-// // }
-// // .card-ten-right {
-// //   background: #1F2833;
-// // }
-// // .ten-about {
-// //   padding: 1em;
-// //   background: #1F2833;
-// // }
-// // .ten-about p {
-// //   font-size: 1.2em;
-// //   line-height: 1.6em;
-// //   color: #C5C6C7;
-// // }
-// // /* positioning the right arrow button and follow button */
-// // .ten-buttons-right {
-// //   padding: 1em;
-// //   background-color: #1F2833;
-// //   position: absolute;
-// //   right: 0;
-// //   /* transition: 0.6s; */
-// // }
-// // .ten-buttons-right a {
-// //   display: inline-block;
-// // }
-// // .ten-buttons-right a:nth-child(2) {
-// //   float: right;
-// //   padding: 0.5em 2em;
-// // }
-// // .ten-arrow-btn-right {
-// //   float: left;
-// // }
+}
 
-// // /* media queries can be added here, or you can modify these for the size of the card that has ben changed */
+.section {
+  padding: 75px 0;
 
-// // /* The default font size is 16px and these two media queries will make it shrink from the 16px font size to 14px and 12px when the screen hits the size of 400px and 350px */
+}
 
-// // /* But if the font size is changed to something other than the default 16px then the max width and card container font size values in the media query must be changed or another one must be aded to keep the cards responsiveness*/
+.section.mobile {
+  display: none;
+}
 
-// // @media screen and (max-width: 400px) {
-// //   .card-ten-container {
-// //     font-size: 14px;
-// //   }
-// //   .ten-buttons-left {
-// //     margin-bottom: 2em;
-// //   }
-// //   .ten-buttons-right {
-// //     width: 22.3em;
-// //   }
-// // }
-// // @media screen and (max-width: 350px) {
-// //   .card-ten-container {
-// //     font-size: 12px;
-// //   }
-// //   .ten-buttons-right {
-// //     width: 22.2em;
-// //   }
-// // }
+.container {
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 60px;
+  display: flex;
+}
+
+.container._01 {
+  max-width: 40%;
+}
+
+.image {
+  width: 80%;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-container {
+  width: 60vw;
+  height: 40vw;
+  border: 1px solid #fff9d6;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  display: flex;
+}
+
+.image-container._02 {
+  background-color: var(--black);
+}
+
+.text-wrapper {
+  width: auto;
+  height: 40vw;
+  border: 1px solid #fff9d6;
+  border-radius: 20px;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 53px;
+  padding: 3vw;
+  display: flex;
+}
+
+.text-wrapper._02 {
+  z-index: -1;
+  position: relative;
+}
+
+.text-wrapper._01 {
+  color: #272626;
+}
+
+.heading {
+  color: #fff9d6;
+  margin-bottom: 20px;
+  font-family: Montserrat, sans-serif;
+  font-size: 3vw;
+  line-height: 1;
+}
+
+.paragraph {
+  color: rgba(255, 249, 214, .6);
+  margin-bottom: 20px;
+  font-family: Varela Round, sans-serif;
+  font-size: 1.5vw;
+  line-height: 1.5;
+}
+
+.button {
+  color: #ff9b4e;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #ff9b4e;
+  border-radius: 11px;
+  flex: 0 auto;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 15px 27px;
+  font-family: Varela Round, sans-serif;
+  font-size: 16px;
+}
+
+.section-00 {
+  height: 100vh;
+}
+
+.section-scroll {
+  height: 100vh;
+  border-top: 1px solid #8f8f8f;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5rem;
+  display: block;
+}
+
+.scroll-text-container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+  display: flex;
+}
+
+.heading-2 {
+  color: var(--white);
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 5vw;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.image-2 {
+  width: 3vw;
+}
+
+.clone {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.button-2 {
+  border: 3px solid var(--white);
+  color: var(--white);
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url('../images/655792ba6387c1fe97ee31e4_clone.webp');
+  background-position: 10%;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  border-radius: 50px;
+  padding: 20px 30px 20px 70px;
+  font-family: Montserrat, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.made-by {
+  border-style: solid none none;
+  border-width: 1px;
+  border-color: var(--white);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.link {
+  color: var(--white);
+}
+
+.heading-3 {
+  color: #fff9d6;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+@media screen and (max-width: 991px) {
+  .section {
+    padding: 0 30px;
+  }
+
+  .container._02 {
+    flex-direction: column;
+    margin-top: 16px;
+  }
+
+  .container._01 {
+    flex-direction: column;
+  }
+
+  .image {
+    width: 100%;
+  }
+
+  .image-container._02, .image-container._01 {
+    width: 100%;
+    height: auto;
+  }
+
+  .text-wrapper._02 {
+    z-index: -1;
+    height: 100%;
+    flex: 0 auto;
+    margin-top: 16px;
+    margin-left: 0;
+    padding: 30px;
+  }
+
+  .text-wrapper._01 {
+    height: auto;
+    flex: 0 auto;
+    margin-top: 16px;
+    margin-left: 0;
+    padding: 30px;
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+
+  .section-scroll {
+    height: 100vh;
+  }
+
+  .heading-2 {
+    font-size: 50px;
+  }
+
+  .image-2 {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .heading-2 {
+    font-size: 36px;
+  }
+
+  .image-2 {
+    width: 50px;
+  }
+
+  .link {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .section {
+    display: none;
+  }
+
+  .section.mobile {
+    display: block;
+  }
+
+  .text-wrapper._01 {
+    padding: 20px;
+  }
+
+  .section-scroll {
+    height: 100vh;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .heading-2 {
+    font-size: 28px;
+  }
+
+  .image-2 {
+    width: 50px;
+    font-size: 50px;
+  }
+
+  .button-2 {
+    font-size: 16px;
+  }
+
+  .link {
+    text-align: center;
+    font-size: 14px;
+  }
+}
 
 
 
-// .cards {
-//   margin-bottom: 2em;
-// }
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 
-// .cards .container {
-//   padding: 2em;
-//   display: grid;
-//   grid-template-columns: repeat(3, 1fr);
-//   justify-items: center;
-//   grid-gap: 2em;
-// }
+}
 
-// .cards img {
-//   width: 100%;
-//   border-radius: 2.5em;
-//   margin-top: -4em;
-//   transition: 0.3s;
-// }
+body {
+  margin: 0;
+}
 
-// .card {
-//   background: #fff;
-//   padding: 2em;
-//   border-radius: 2.5em;
-// }
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
 
-// .card-text {
-//   margin: 1.5em 1em 0 1em;
-// }
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
 
-// .card p {
-//   margin: 1em 0;
-//   font-size: 0.9em;
-//   line-height: 27px;
-// }
-
-// .card:hover img {
-//   transform: translateY(-2em);
-// }
-
-// .card a i {
-//   margin: 0 0.5em;
-// }
-
-// @keyframes fadeIn {
-//   0% {opacity: 0;}
-//   100% {opacity: 1;}
-// }
-
-// @keyframes slideUp {
-//   0% {
-//     opacity: 0;
-//     transform: translateY(100px);
-//   }
-//   100% {
-//     opacity: 1;
-//     transform: translateY(0px);
-//   }
-// }
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none;
+}
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold;
+}
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+}
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+img {
+  border: 0;
+}
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+figure {
+  margin: 1em 40px;
+}
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+/**
+ * Contain overflow in all browsers.
+ */
+pre {
+  overflow: auto;
+}
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible;
+}
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none;
+}
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. CUSTOM FOR WEBFLOW: Removed the input[type="submit"] selector to reduce
+ *    specificity and defer to the .w-button selector
+ */
+button,
+html input[type="button"],
+input[type="reset"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal;
+}
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type='checkbox'],
+input[type='radio'] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  height: auto;
+}
+/**
+ * 1. CUSTOM FOR WEBFLOW: changed from `textfield` to `none` to normalize iOS rounded input
+ * 2. CUSTOM FOR WEBFLOW: box-sizing: content-box rule removed
+ *    (similar to normalize.css >=4.0.0)
+ */
+input[type='search'] {
+  -webkit-appearance: none;
+  /* 1 */
+}
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto;
+}
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold;
+}
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}

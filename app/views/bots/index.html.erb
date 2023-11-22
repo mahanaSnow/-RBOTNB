@@ -1,16 +1,4 @@
-<h1>Bots List</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price Per Day</th>
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<tbody>
     <% @bots.each do |bot| %>
       <tr>
         <td><%= bot.name %></td>
@@ -25,3 +13,18 @@
 </table>
 
 <%= link_to 'New Bot', new_bot_path %>
+
+  <div class="wrapper">
+  <% @bots.each do |bot| %>
+    <div class="section">
+      <div class="container _01">
+        <div class="text-wrapper _01">
+          <h1 class="heading"><%= bot.name %></h1>
+          <p class="paragraph"><%= bot.description%></p>
+          <h2 class="heading-3"><%= number_to_currency(bot.price_per_day, unit: "€") %>/J</h2>
+          <%= link_to 'Show', bot, class:'button w-button' %>
+        </div>
+      </div>
+    </div>
+     <% end %>
+  </div>

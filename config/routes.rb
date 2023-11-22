@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :bots
 
-  # Routes for Rentals
   resources :rentals, only: [:create, :index] do
     member do
       patch 'accept'
@@ -11,6 +10,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # Devise routes
   devise_for :users
 end
