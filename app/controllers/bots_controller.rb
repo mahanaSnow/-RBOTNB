@@ -1,5 +1,6 @@
 # app/controllers/bots_controller.rb
 class BotsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_bot, only: [:show, :edit, :update, :destroy]
 
   def index

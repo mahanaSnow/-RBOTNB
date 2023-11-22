@@ -1,24 +1,16 @@
-</head>
-<body>
+
   <header>
-    <div class="container">
+    <div class="container_home">
       <nav class="navbar">
         <a href="index.html" class="brand">RBOTNB</a>
         <ul class="menu">
           <li><a href="#">accueil</a></li>
           <li><a href="#">Découvrir</a></li>
            <li><a href="#">Contact</a></li>
-
-          <li class="btn-list-item">
-            <a href="#" class="btn btn-secondary">Sign Up</a>
-          </li>
-          <li class="btn-list-item">
-            <a href="#" class="btn btn-primary">Sign In</a>
-          </li>
         </ul>
         <div class="buttons">
-          <a href="#" class="btn btn-secondary">Sign Up</a>
-          <a href="#" class="btn btn-primary">Sign In</a>
+          <%= link_to 'créer un compte', new_user_registration_path, class: 'btn btn-secondary' %>
+          <%= link_to 'se connecter', new_user_session_path, class: 'btn btn-primary' %>
         </div>
 
         <button class="menu-btn">
@@ -32,14 +24,11 @@
             <h1 class="title">
                Louez l'intelligence artificielle <br>
             </h1>
-            <!-- <hr style="width: 200px;"> -->
             <p>
-              exlporez les possibilités de l'intelligence artificielle pour votre entreprise.
+              Exlporez les possibilités de l'intelligence artificielle pour votre entreprise.
             </p>
             <div class="buttons">
-              <a href="#" class="btn btn-primary">
-                Découvrir
-              </a>
+              <%= link_to 'Découvrir', bots_path, class: 'btn btn-primary' %>
               <a href="#" class="btn btn-secondary">
                 En savoir plus
               </a>

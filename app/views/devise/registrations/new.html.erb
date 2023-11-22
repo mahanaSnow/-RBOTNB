@@ -1,0 +1,134 @@
+<!--<h2>Sign up</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+-->
+
+
+
+
+
+<!-- app/views/devise/registrations/new.html.erb -->
+<!--<div class="signup-container">
+  <h2>Sign Up</h2>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "signup-form" }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email", class: "signup-input" } %>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password", class: "signup-input" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password", class: "signup-input" } %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up", class: "signup-button" %>
+    </div>
+  <% end %>
+
+  <div class="alternative-login">
+    <%= link_to "Already have an account? Log in", new_user_session_path %>
+    <div class="social-buttons">
+      <%= link_to "#", class: "social-button google" do %>
+        <i class="fab fa-google"></i>
+      <% end %>
+      <%= link_to "#", class: "social-button facebook" do %>
+        <i class="fab fa-facebook-f"></i>
+      <% end %>
+      <%= link_to "#", class: "social-button linkedin" do %>
+        <i class="fab fa-linkedin-in"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
+-->
+
+
+
+
+
+
+
+
+
+
+
+<!-- app/views/devise/registrations/new.html.erb -->
+<div class="signup-container">
+  <h2>Sign Up</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "signup-form" }) do |f| %>
+    <% if resource.errors.any? %>
+      <div class="errors">
+        <ul>
+          <% resource.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "signup-input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "signup-input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "signup-input" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class: "signup-button" %>
+    </div>
+  <% end %>
+
+  <div class="alternative-login">
+    <%= link_to "Already have an account? Log in", new_user_session_path %>
+    <div class="social-buttons">
+      <%= link_to "#", class: "social-button google" do %>
+        <i class="fab fa-google"></i>
+      <% end %>
+      <%= link_to "#", class: "social-button facebook" do %>
+        <i class="fab fa-facebook-f"></i>
+      <% end %>
+      <%= link_to "#", class: "social-button linkedin" do %>
+        <i class="fab fa-linkedin-in"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

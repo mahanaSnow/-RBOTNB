@@ -1,14 +1,36 @@
-<!-- app/views/bots/show.html.erb -->
-<h1><%= @bot.name %></h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @bot.description %>
-</p>
+<div class="page-header">
+  <h1  class= "merci">Merci pour votre choix</h1>
+  <p>Vous avez choisi: <span><%= @bot.name.capitalize %></span></p>
+</div>
 
-<p>
-  <strong>Price per day:</strong>
-  <%= number_to_currency(@bot.price_per_day) %>
-</p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h2>Réservez votre expérience IA</h2>
+    </div>
 
-<%= link_to 'Back to List', bots_path %>
+    <%= form_with(model: Rental.new, url: rentals_path, local: true, id: 'rental-form', class: 'rental-form') do |form| %>
+      <%= form.hidden_field :bot_id, value: @bot.id %>
+
+      <div class="form-group">
+        <%= form.label :start_date, "Date de début" %>
+        <%= form.date_field :start_date, id: 'start_date', class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :end_date, "Date de fin" %>
+        <%= form.date_field :end_date, id: 'end_date', class: 'form-control' %>
+      </div>
+
+      <%= form.submit "Réserver ce Bot", class: "submit-button" %>
+    <% end %>
+  </div>
+
+  <div class="price-card">
+    <h2>Coût total</h2>
+    <div class="total-price" id="total-price">
+      <%= number_to_currency(0) %>
+    </div>
+  </div>
+</div>
