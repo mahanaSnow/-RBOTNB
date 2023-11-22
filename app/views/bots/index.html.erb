@@ -6,11 +6,10 @@
         <td><%= bot.price_per_day %></td>
         <td><%= link_to 'Show', bot %></td>
         <td><%= link_to 'Edit', edit_bot_path(bot) %></td>
-        <td><%= button_to 'Destroy', bot, method: :delete, data: { confirm: 'Are you sure?' }%><td>
+        <td><%= button_to 'Destroy', bot, method: :delete, data: { confirm: 'Are you sure?' }%></td>
       </tr>
     <% end %>
   </tbody>
-</table>
 
 <%= link_to 'New Bot', new_bot_path %>
 
@@ -28,3 +27,42 @@
     </div>
      <% end %>
   </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Ajouter un écouteur d'événement sur le changement de valeur des champs de date
+    document.querySelectorAll(".start-date-input, .end-date-input").forEach(function(input) {
+      input.addEventListener("change", function() {
+        // Appeler la fonction pour mettre à jour le total_price
+        updateTotalPrice(this);
+      });
+    });
+
+    // Fonction pour mettre à jour le total_price
+    function updateTotalPrice(input) {
+      // Obtenir les éléments d'entrée (champs de date)
+      const startDateInput = document.querySelector(".start-date-input");
+      const endDateInput = document.querySelector(".end-date-input");
+      const totalPriceSpan = document.querySelector(".total-price-span");
+
+      // Récupérer les valeurs des champs de date
+      const startDate = new Date(startDateInput.value);
+      const endDate = new Date(endDateInput.value);
+
+      // Calculer le nombre de jours de location
+      const rentalDays = Math.max(0, (endDate - startDate) / (24 * 60 * 60 * 1000));
+
+      // Supposons que bot.price_per_day est le prix par jour du bot
+      const pricePerDay = <%= @bots.first.price_per_day %>; // Supposons que tous les bots ont le même prix par jour
+
+      // Calculer le total_price
+      const totalPrice = rentalDays * pricePerDay;
+
+      // Mettre à jour le texte dans la balise <span>
+      totalPriceSpan.innerText = totalPrice.toFixed(2);
+    }
+
+    // Appeler la fonction pour initialiser le total_price
+    updateTotalPrice();
+  });
+</script>
