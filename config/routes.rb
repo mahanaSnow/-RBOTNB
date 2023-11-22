@@ -9,6 +9,6 @@ Rails.application.routes.draw do
       patch 'decline'
     end
   end
-
+  get 'dashboard', to: 'dashboard#show', as: 'dashboard'
   devise_for :users
 end

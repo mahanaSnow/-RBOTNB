@@ -1,0 +1,16 @@
+
+
+<nav class="custom-navbar">
+  <div class="custom-nav-logo">
+    <%= link_to 'RBOTNB', bots_path, class: 'custom-logo-link' %>
+  </div>
+  <div class="custom-nav-links">
+    <%= link_to 'Link 1', '#', class: 'custom-nav-item' %>
+    <%= link_to 'Link 2', '#', class: 'custom-nav-item' %>
+    <%= link_to 'Link 3', '#', class: 'custom-nav-item' %>
+  </div>
+  <div class="custom-nav-user">
+    <%= link_to 'Mon Tableau de Bord', dashboard_path, class: 'custom-nav-item' %>
+    <%= link_to 'Se Déconnecter', destroy_user_session_path, method: :delete, class: 'custom-nav-item logout' %>
+  </div>
+</nav>

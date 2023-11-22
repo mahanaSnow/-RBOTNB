@@ -17,9 +17,10 @@ class BotsController < ApplicationController
 
   def create
     @bot = Bot.new(bot_params)
+    @bot.user = current_user
     if @bot.save
-      redirect_to @bot, notice: 'Bot was successfully created.'
-    else
+      redirect_to dashboard_path, notice: 'Bot was successfully created.'
+        else
       render :new
     end
   end
@@ -37,7 +38,7 @@ class BotsController < ApplicationController
 
   def destroy
     @bot.destroy
-    redirect_to bots_url, notice: 'Bot was successfully destroyed.'
+    redirect_to dashboard_path, notice: 'Bot was successfully destroyed.'
   end
 
   private

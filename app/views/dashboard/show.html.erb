@@ -1,0 +1,79 @@
+<%= render 'layouts/navbar' %>
+
+<div class="dashboard-container">
+  <!-- Section des Réservations Reçues -->
+  <section class="section-reservations">
+    <h2>Mes Réservations Reçues</h2>
+    <div class="reservations-list">
+      <% if @received_reservations.present? %>
+        <% @received_reservations.each do |reservation| %>
+          <div class="reservation">
+            <h3><%= reservation.bot.name %></h3>
+            <p>Status: <%= reservation.status %></p>
+            <!-- Autres détails de la réservation -->
+          </div>
+        <% end %>
+      <% else %>
+        <p>Aucune réservation reçue.</p>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- Section de Mes Bots -->
+  <section class="section-my-bots">
+    <h2>Mes Bots</h2>
+    <div class="bots-list">
+      <% if @user_bots.present? %>
+        <% @user_bots.each do |bot| %>
+          <div class="bot">
+            <h3><%= bot.name %></h3>
+            <p><%= bot.description %></p>
+            <span><%= number_to_currency(bot.price_per_day, unit: "€") %>/day</span>
+            <%= button_to 'Delete', bot_path(bot), method: :delete, class: 'delete-btn', data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Vous n'avez pas encore créé de bots.</p>
+      <% end %>
+      <%= link_to 'Créer un Nouveau Bot', new_bot_path, class: 'create-bot-button' %>
+    </div>
+  </section>
+
+  <!-- Section de Mes Réservations -->
+  <section class="section-my-bookings">
+    <h2>Mes Réservations</h2>
+    <div class="bookings-list">
+      <% if @my_reservations.present? %>
+        <% @my_reservations.each do |booking| %>
+          <div class="booking">
+            <h3><%= booking.bot.name %></h3>
+            <p>Date: <%= booking.date %></p>
+            <!-- Autres détails de la réservation -->
+          </div>
+        <% end %>
+      <% else %>
+        <p>Aucune réservation effectuée.</p>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- Section des Demandes de Location -->
+  <section class="rental-requests">
+    <h2>Demandes de Location</h2>
+    <div class="requests-list">
+      <% if @rental_requests.present? %>
+        <% @rental_requests.each do |request| %>
+          <div class="request">
+            <p><strong>Bot:</strong> <%= request.bot.name %></p>
+            <p><strong>Status:</strong> <%= request.status %></p>
+            <%= link_to 'Accept', accept_request_path(request), method: :patch, class: 'accept-btn' %>
+            <%= link_to 'Decline', decline_request_path(request), method: :patch, class: 'decline-btn' %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Aucune demande de location reçue.</p>
+      <% end %>
+    </div>
+  </section>
+</div>
+-->
