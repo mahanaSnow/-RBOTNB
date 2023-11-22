@@ -26,6 +26,15 @@
     <% end %>
   </div>
 
+  <div class="total" data-price-per-day="<%= @bot.price_per_day %>">
+  <div class="price-card">
+    <h2>Prix par jour</h2>
+    <div class="price-per-day" id="price_per_day">
+      <%= number_to_currency(@bot.price_per_day) %>
+    </div>
+  </div>
+  </div>
+
   <div class="price-card">
     <h2>Coût total</h2>
     <div class="total-price" id="total-price">
@@ -35,29 +44,31 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const startDateInput = document.getElementById("start_date");
-    const endDateInput = document.getElementById("end_date");
-    const totalPriceSpan = document.getElementById("total-price");
+document.addEventListener("DOMContentLoaded", function() {
+  const startDateInput = document.getElementById("start_date");
+  const endDateInput = document.getElementById("end_date");
+  const totalPriceSpan = document.getElementById("total-price");
 
-    function updateTotalPrice(startDateInput, endDateInput, totalPriceSpan) {
-      const startDate = new Date(startDateInput.value);
-      const endDate = new Date(endDateInput.value);
-      const rentalDays = Math.max(0, (endDate - startDate) / (24 * 60 * 60 * 1000));
+  // Récupérer pricePerDay à partir d'un attribut de données
+  const pricePerDay = parseFloat(document.getElementById("price_per_day").getAttribute("data-price-per-day"));
 
-      // Supposons que bot.price_per_day est le prix par jour du bot
-      const pricePerDay = <%= @bots.first.price_per_day %>; // Supposons que tous les bots ont le même prix par jour
+  function updateTotalPrice() {
+    const startDate = new Date(startDateInput.value);
+    const endDate = new Date(endDateInput.value);
+    const rentalDays = Math.max(0, (endDate - startDate) / (24 * 60 * 60 * 1000));
 
-      const totalPrice = rentalDays * pricePerDay;
-      totalPriceSpan.innerText = '<%= number_to_currency(totalPrice) %>';
-    }
+    // Calculer le coût total
+    const totalPrice = rentalDays * pricePerDay;
 
-    [startDateInput, endDateInput].forEach(function(input) {
-      input.addEventListener("change", function() {
-        updateTotalPrice(startDateInput, endDateInput, totalPriceSpan);
-      });
-    });
+    // Mettre à jour l'affichage du coût total
+    totalPriceSpan.innerText = '<%= number_to_currency(totalPrice) %>';
+  }
 
-    updateTotalPrice(startDateInput, endDateInput, totalPriceSpan);
+  // Ajouter un addEventListener sur le changement de valeur des champs de date
+  document.querySelectorAll(".form-control").forEach(function(input) {
+    input.addEventListener("change", updateTotalPrice);
   });
-</script>
+
+  // Appeler la fonction pour initialiser le coût total
+  updateTotalPrice();
+});
