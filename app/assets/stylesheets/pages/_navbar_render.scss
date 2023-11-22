@@ -1,0 +1,49 @@
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 25px;
+}
+
+
+.custom-nav-logo, .custom-nav-links, .custom-nav-user {
+  display: flex;
+  align-items: center;
+}
+
+
+.custom-logo-link, .custom-nav-item {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  margin: 0 10px;
+  position: relative;
+}
+.custom-logo-link{
+  font-size: 2em;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+}
+.custom-nav-item::after, .custom-logo-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width 0.3s ease-in-out;
+}
+
+.custom-nav-item:hover::after, .custom-logo-link:hover::after {
+  width: 100%;
+}
+
+/* Style pour le bouton de déconnexion */
+.logout {
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}

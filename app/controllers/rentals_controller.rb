@@ -23,7 +23,7 @@ class RentalsController < ApplicationController
   def accept
     if @rental.update(status: 'accepted')
       # Ajoutez ici toute logique supplémentaire nécessaire lors de l'acceptation d'une location
-      redirect_to rentals_path, notice: 'Rental was successfully accepted.'
+      redirect_to dashboard_path, notice: 'Rental was successfully accepted.'
     else
       redirect_to rentals_path, alert: 'Unable to accept the rental.'
     end
