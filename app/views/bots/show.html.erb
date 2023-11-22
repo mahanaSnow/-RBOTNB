@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Mettre à jour l'affichage du coût total
     totalPriceSpan.innerText = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(totalPrice);
   }
+
   // Ajouter un addEventListener sur le changement de valeur des champs de date
   document.querySelectorAll(".form-control").forEach(function(input) {
     input.addEventListener("change", updateTotalPrice);
