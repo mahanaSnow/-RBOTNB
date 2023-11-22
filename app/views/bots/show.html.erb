@@ -37,7 +37,7 @@
 
   <div class="price-card">
     <h2>Coût total</h2>
-    <div class="total-price" id="total-price">
+    <div class="total-price" id="total-price" data-total-price="<%= number_to_currency(0) %>">
       <%= number_to_currency(0) %>
     </div>
   </div>
@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Récupérer pricePerDay à partir d'un attribut de données
   const pricePerDay = parseFloat(document.getElementById("price_per_day").getAttribute("data-price-per-day"));
+  const initialTotalPrice = parseFloat(totalPriceSpan.getAttribute("data-total-price")); // Récupérer la valeur initiale du coût total
 
   function updateTotalPrice() {
     const startDate = new Date(startDateInput.value);
@@ -58,11 +59,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const rentalDays = Math.max(0, (endDate - startDate) / (24 * 60 * 60 * 1000));
 
     // Calculer le coût total
-    const totalPrice = rentalDays * pricePerDay;
+    const totalPrice = rentalDays * pricePerDay + initialTotalPrice; // Utiliser la valeur initiale
 
     // Mettre à jour l'affichage du coût total
-    totalPriceSpan.innerText = '<%= number_to_currency(totalPrice) %>';
-  }
+    totalPriceSpan.innerText = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(totalPrice);
 
   // Ajouter un addEventListener sur le changement de valeur des champs de date
   document.querySelectorAll(".form-control").forEach(function(input) {
