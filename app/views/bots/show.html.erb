@@ -36,39 +36,28 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    // Ajouter un écouteur d'événement sur le changement de valeur des champs de date
-    document.querySelectorAll(".form-control").forEach(function(input) {
-      input.addEventListener("change", function() {
-        // Appeler la fonction pour mettre à jour le total_price
-        updateTotalPrice();
-      });
-    });
+    const startDateInput = document.getElementById("start_date");
+    const endDateInput = document.getElementById("end_date");
+    const totalPriceSpan = document.getElementById("total-price");
 
-    // Fonction pour mettre à jour le total_price
-    function updateTotalPrice() {
-      // Obtenir les éléments d'entrée (champs de date)
-      const startDateInput = document.getElementById("start_date");
-      const endDateInput = document.getElementById("end_date");
-      const totalPriceSpan = document.getElementById("total-price");
-
-      // Récupérer les valeurs des champs de date
+    function updateTotalPrice(startDateInput, endDateInput, totalPriceSpan) {
       const startDate = new Date(startDateInput.value);
       const endDate = new Date(endDateInput.value);
-
-      // Calculer le nombre de jours de location
       const rentalDays = Math.max(0, (endDate - startDate) / (24 * 60 * 60 * 1000));
 
       // Supposons que bot.price_per_day est le prix par jour du bot
       const pricePerDay = <%= @bots.first.price_per_day %>; // Supposons que tous les bots ont le même prix par jour
 
-      // Calculer le total_price
       const totalPrice = rentalDays * pricePerDay;
-
-      // Mettre à jour le texte dans la balise <span>
-      totalPriceSpan.innerText = <%= number_to_currency(totalPrice) %>;
+      totalPriceSpan.innerText = '<%= number_to_currency(totalPrice) %>';
     }
 
-    // Appeler la fonction pour initialiser le total_price
-    updateTotalPrice();
+    [startDateInput, endDateInput].forEach(function(input) {
+      input.addEventListener("change", function() {
+        updateTotalPrice(startDateInput, endDateInput, totalPriceSpan);
+      });
+    });
+
+    updateTotalPrice(startDateInput, endDateInput, totalPriceSpan);
   });
 </script>
