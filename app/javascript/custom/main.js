@@ -1,4 +1,3 @@
-
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
@@ -1277,7 +1276,6 @@
     }
   });
 
-  // packages/shared/render/plugins/Animation/webflow-spline.js
   var require_webflow_spline = __commonJS({
     "packages/shared/render/plugins/Animation/webflow-spline.js"(exports, module) {
       "use strict";
@@ -1297,7 +1295,6 @@
     }
   });
 
-  // packages/shared/render/plugins/BaseSiteModules/webflow-brand.js
   var require_webflow_brand = __commonJS({
     "packages/shared/render/plugins/BaseSiteModules/webflow-brand.js"(exports, module) {
       "use strict";
@@ -1361,7 +1358,6 @@
     }
   });
 
-  // packages/shared/render/plugins/BaseSiteModules/webflow-focus-visible.js
   var require_webflow_focus_visible = __commonJS({
     "packages/shared/render/plugins/BaseSiteModules/webflow-focus-visible.js"(exports, module) {
       "use strict";
@@ -1513,7 +1509,6 @@
     }
   });
 
-  // packages/shared/render/plugins/BaseSiteModules/webflow-focus.js
   var require_webflow_focus = __commonJS({
     "packages/shared/render/plugins/BaseSiteModules/webflow-focus.js"(exports, module) {
       "use strict";
@@ -1566,7 +1561,6 @@
     }
   });
 
-  // packages/shared/render/plugins/BaseSiteModules/webflow-links.js
   var require_webflow_links = __commonJS({
     "packages/shared/render/plugins/BaseSiteModules/webflow-links.js"(exports, module) {
       "use strict";
@@ -1655,7 +1649,6 @@
     }
   });
 
-  // packages/shared/render/plugins/BaseSiteModules/webflow-scroll.js
   var require_webflow_scroll = __commonJS({
     "packages/shared/render/plugins/BaseSiteModules/webflow-scroll.js"(exports, module) {
       "use strict";
@@ -1830,7 +1823,6 @@
     }
   });
 
-  // packages/shared/render/plugins/BaseSiteModules/webflow-touch.js
   var require_webflow_touch = __commonJS({
     "packages/shared/render/plugins/BaseSiteModules/webflow-touch.js"(exports, module) {
       "use strict";
