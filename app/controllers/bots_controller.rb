@@ -30,13 +30,15 @@ class BotsController < ApplicationController
 
   def update
     if @bot.update(bot_params)
-      redirect_to @bot, notice: 'Bot was successfully updated.'
+      redirect_to dashboard_path, notice: 'Bot was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
+    @bot = Bot.find(params[:id])
+    @bot.rentals.destroy_all
     @bot.destroy
     redirect_to dashboard_path, notice: 'Bot was successfully destroyed.'
   end
