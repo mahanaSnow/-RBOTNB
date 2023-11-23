@@ -1,63 +1,37 @@
 <%= render 'layouts/navbar' %>
-<div class="page-header">
-  <h1  class= "merci">Merci pour votre choix</h1>
-  <p>Vous avez choisi: <span><%= @bot.name.capitalize %></span></p>
-</div>
 
-<div class="container">
-  <div class="card">
-    <div class="card-header">
-      <h2>Réservez votre expérience IA</h2>
-    </div>
-
-    <%= form_with(model: Rental.new, url: rentals_path, local: true, id: 'rental-form', class: 'rental-form') do |form| %>
-      <%= form.hidden_field :bot_id, value: @bot.id %>
-
-      <div class="form-group">
-        <%= form.label :start_date, "Date de début" %>
-        <%= form.date_field :start_date, id: 'start_date', class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= form.label :end_date, "Date de fin" %>
-        <%= form.date_field :end_date, id: 'end_date', class: 'form-control' %>
-      </div>
-
-      <%= form.submit "Réserver ce Bot", class: "submit-button" %>
-    <% end %>
+<div class="reserv-wrap">
+  <div class="reserv-header-wrap">
+    <h1 class="reserv-header-title">Votre Aventure avec <%= @bot.name.capitalize %> Commence Ici</h1>
   </div>
 
-  <div class="price-card">
-    <h2>Coût total</h2>
-    <div class="total-price" id="total-price">
-      <%= number_to_currency(0) %>
+  <div class="reserv-main">
+    <div class="reserv-card-wrap">
+      <h2 class="reserv-card-header">Planification de Votre Expérience</h2>
+      <%= form_with(model: Rental.new, url: rentals_path, local: true, id: 'reserv-form', class: 'reserv-form-wrap') do |form| %>
+        <%= form.hidden_field :bot_id, value: @bot.id, class: 'reserv-hidden-id' %>
+
+        <div class="reserv-input-group">
+          <%= form.label :start_date, "Date de Début", class: 'reserv-label' %>
+          <%= form.date_field :start_date, id: 'start_date', class: 'reserv-date-input', 'data-price-per-day': @bot.price_per_day %>
+        </div>
+
+        <div class="reserv-input-group">
+          <%= form.label :end_date, "Date de Fin", class: 'reserv-label' %>
+          <%= form.date_field :end_date, id: 'end_date', class: 'reserv-date-input' %>
+        </div>
+
+        <%= form.submit "Confirmer", class: "reserv-confirm-btn" %>
+        <%= link_to 'Annuler', bots_path, class: 'reserv-cancel-link' %>
+      <% end %>
+    </div>
+
+    <div class="reserv-price-wrap">
+      <h2 class="reserv-price-header">Coût Estimé</h2>
+      <div class="reserv-price-value" id="total-price">
+        <%= number_to_currency(0) %>
+      </div>
     </div>
   </div>
 </div>
-
-<script>document.addEventListener('turbolinks:load', function() {
-  const startDateInput = document.getElementById('start_date');
-  const endDateInput = document.getElementById('end_date');
-  const totalPriceElement = document.getElementById('total-price');
-  const pricePerDay = <%= @bot.price_per_day.to_f %>;
-
-  function calculateTotal() {
-    const startDate = new Date(startDateInput.value);
-    const endDate = new Date(endDateInput.value);
-
-    if (startDate && endDate && startDate <= endDate) {
-      const dayInMillis = 24 * 60 * 60 * 1000;
-      const days = Math.ceil((endDate - startDate) / dayInMillis);
-      const totalPrice = days * pricePerDay;
-
-      totalPriceElement.textContent = "<%= number_to_currency(0) %>".replace("0", totalPrice.toFixed(2));
-    } else {
-      totalPriceElement.textContent = "<%= number_to_currency(0) %>";
-    }
-  }
-
-  startDateInput.addEventListener('change', calculateTotal);
-  endDateInput.addEventListener('change', calculateTotal);
-});
-
-</script>
+<%= javascript_include_tag 'custom/calculate', 'data-turbolinks-track': 'reload' %>

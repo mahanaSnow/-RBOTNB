@@ -24,13 +24,13 @@
   }
 }
 
-body {
-  background-color: var(--swatch--dark);
-  color: var(--swatch--light);
-  font-family: WF Visual Sans, sans-serif;
-  font-size: 1rem;
-  line-height: 1.4;
-}
+// body {
+//   // background-color: var(--swatch--dark);
+//   color: var(--swatch--light);
+//   font-family: WF Visual Sans, sans-serif;
+//   font-size: 1rem;
+//   line-height: 1.4;
+// }
 
 h1 {
   letter-spacing: -.03em;
@@ -185,9 +185,9 @@ img {
   display: grid;
 }
 
-.body {
-  background-color: #ded9c7;
-}
+// .body {
+//   background-color: #ded9c7;
+// }
 
 .heading_list {
   line-height: 1.1;
@@ -223,38 +223,6 @@ img {
   grid-area: span 1 / span 1 / span 1 / span 1;
 }
 
-
-@font-face {
-  font-family: 'WF Visual Sans';
-  src: url('../fonts/WFVisualSans-RegularText.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'WF Visual Sans';
-  src: url('../fonts/WFVisualSans-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'WF Visual Sans';
-  src: url('../fonts/WFVisualSans-SemiBold.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-
-
-/*séparation*/
-
-
-
-
-
-
 .sec {
   flex-direction: column;
   justify-content: center;
@@ -279,11 +247,12 @@ img {
 }
 
 .bot-card {
+  // border:1px solid darkgrey;
   width: 300px;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 21px;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Assure une distribution égale de l'espace */

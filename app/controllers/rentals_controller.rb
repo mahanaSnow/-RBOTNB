@@ -13,8 +13,7 @@ class RentalsController < ApplicationController
     @rental = current_user.rentals.build(rental_params)
     @rental.status = 'pending'
     if @rental.save
-      redirect_to rentals_path, notice: 'Rental request was successfully created.'
-    else
+      redirect_to dashboard_path, notice: 'Votre réservation a été effectuée avec succès.'    else
       render :new
     end
   end
@@ -29,7 +28,6 @@ class RentalsController < ApplicationController
 
   def decline
     if @rental.update(status: 'declined')
-      # Ajoutez ici toute logique supplémentaire nécessaire lors du refus d'une location
       redirect_to rentals_path, notice: 'Rental was successfully declined.'
     else
       redirect_to rentals_path, alert: 'Unable to decline the rental.'
