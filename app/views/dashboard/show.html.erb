@@ -1,26 +1,7 @@
 <%= render 'layouts/navbar' %>
 
 <div class="dashboard-container">
-  <!-- Section des Réservations Reçues -->
-  <section class="section-reservations">
-    <h2>Mes Réservations Reçues</h2>
-    <div class="reservations-list">
-      <% if @received_reservations.present? %>
-        <% @received_reservations.each do |reservation| %>
-          <div class="reservation">
-            <h3><%= reservation.bot.name %></h3>
-            <p>Status: <%= reservation.status %></p>
-            <!-- Autres détails de la réservation -->
-          </div>
-        <% end %>
-      <% else %>
-        <p>Aucune réservation reçue.</p>
-      <% end %>
-    </div>
-  </section>
-
-  <!-- Section de Mes Bots -->
-  <section class="section-my-bots">
+   <section class="section-my-bots">
     <h2>Mes Bots</h2>
     <div class="bots-list">
       <% if @user_bots.present? %>
@@ -39,39 +20,39 @@
     </div>
   </section>
 
-  <!-- Section de Mes Réservations -->
-  <section class="section-my-bookings">
-    <h2>Mes Réservations</h2>
-    <div class="bookings-list">
-      <% if @my_reservations.present? %>
-        <% @my_reservations.each do |booking| %>
-          <div class="booking">
-            <h3><%= booking.bot.name %></h3>
-            <p>Date: <%= booking.date %></p>
-            <!-- Autres détails de la réservation -->
+  <!-- Section des Demandes de Location reçues pour mes bots -->
+  <section class="rental-requests">
+    <h2>Réservations Reçues</h2>
+    <div class="requests-list">
+      <% if @rental_requests.present? %>
+        <% @rental_requests.each do |rental| %>
+          <div class="request">
+            <p><strong>Bot:</strong> <%= rental.bot.name %></p>
+            <p><strong>Status:</strong> <%= rental.status %></p>
+<%= button_to 'Accept', accept_rental_path(rental), method: :patch, class: 'accept-btn' %>
+           <%= button_to 'Decline', decline_rental_path(rental), method: :patch, class: 'decline-btn' %>
           </div>
         <% end %>
       <% else %>
-        <p>Aucune réservation effectuée.</p>
-      <% end %>
+        <p>Aucune demande de location reçue pour vos bots.</p>
+    <% end %>
     </div>
   </section>
 
-  <!-- Section des Demandes de Location -->
-  <section class="rental-requests">
-    <h2>Demandes de Location</h2>
-    <div class="requests-list">
-      <% if @rental_requests.present? %>
-        <% @rental_requests.each do |request| %>
-          <div class="request">
-            <p><strong>Bot:</strong> <%= request.bot.name %></p>
-            <p><strong>Status:</strong> <%= request.status %></p>
-            <%= link_to 'Accept', accept_request_path(request), method: :patch, class: 'accept-btn' %>
-            <%= link_to 'Decline', decline_request_path(request), method: :patch, class: 'decline-btn' %>
+  <!-- Section des réservations que j'ai faites -->
+  <section class="my-rentals">
+    <h2>Mes Réservations</h2>
+    <div class="rentals-list">
+      <% if @my_rentals.present? %>
+        <% @my_rentals.each do |rental| %>
+          <div class="rental">
+            <p><strong>Bot:</strong> <%= rental.bot.name %></p>
+            <p><strong>Date:</strong> <%= rental.start_date %> to <%= rental.end_date %></p>
+            <p><strong>Status:</strong> <%= rental.status %></p>
           </div>
         <% end %>
       <% else %>
-        <p>Aucune demande de location reçue.</p>
+        <p>Vous n'avez effectué aucune réservation.</p>
       <% end %>
     </div>
   </section>

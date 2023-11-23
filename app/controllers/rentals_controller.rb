@@ -1,10 +1,9 @@
-# app/controllers/rentals_controller.rb
 class RentalsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_rental, only: [:accept, :decline]
 
   def index
-    @rentals = current_user.rentals # Afficher les locations de l'utilisateur actuel
+    @rentals = current_user.rentals
   end
 
   def show
@@ -22,7 +21,6 @@ class RentalsController < ApplicationController
 
   def accept
     if @rental.update(status: 'accepted')
-      # Ajoutez ici toute logique supplémentaire nécessaire lors de l'acceptation d'une location
       redirect_to dashboard_path, notice: 'Rental was successfully accepted.'
     else
       redirect_to rentals_path, alert: 'Unable to accept the rental.'
