@@ -1,33 +1,33 @@
 <%= render 'layouts/navbar' %>
-<%= form_with(model: @bot, local: true) do |form| %>
-  <% if @bot.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bot.errors.count, "error") %> prohibited this bot from being saved:</h2>
 
-      <ul>
-        <% @bot.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="awwwards-inspired-bot-form">
+  <%= form_with(model: @bot, local: true, html: { class: 'awwwards-form' }) do |form| %>
+    <% if @bot.errors.any? %>
+      <div class="awwwards-errors">
+        <!-- Affichage des erreurs ici -->
+      </div>
+    <% end %>
+
+    <div class="awwwards-field">
+      <%= form.label :name, 'Nom du Bot', class: 'awwwards-label' %>
+      <%= form.text_field :name, class: 'awwwards-input' %>
+    </div>
+
+    <div class="awwwards-field">
+      <%= form.label :description, 'Personnalité du Bot', class: 'awwwards-label' %>
+      <%= form.text_area :description, class: 'awwwards-input' %>
+    </div>
+
+    <div class="awwwards-field">
+      <%= form.label :price_per_day, 'Tarif Journalier (€)', class: 'awwwards-label' %>
+      <%= form.number_field :price_per_day, class: 'awwwards-input' %>
+    </div>
+
+    <div class="awwwards-actions">
+      <%= form.submit 'Déployer', class: 'awwwards-submit' %>
+      <%= link_to 'Retour', bots_path, class: 'awwwards-back' %>
     </div>
   <% end %>
+</div>
 
-  <div class="form-group">
-    <%= form.label :name, class: 'form-label' %>
-    <%= form.text_field :name, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :description, class: 'form-label' %>
-    <%= form.text_area :description, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :price_per_day, class: 'form-label' %>
-    <%= form.number_field :price_per_day, class: 'form-control' %>
-  </div>
-
-  <div class="form-actions">
-    <%= form.submit 'Create Bot', class: 'submit-button' %>
-  </div>
-<% end %>
+<%= render 'layouts/bot' %>
