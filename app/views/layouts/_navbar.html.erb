@@ -11,6 +11,8 @@
   </div>
   <div class="custom-nav-user">
     <%= link_to 'Mon Tableau de Bord', dashboard_path, class: 'custom-nav-item' %>
-    <%= link_to 'Se Déconnecter', destroy_user_session_path, method: :delete, class: 'custom-nav-item logout' %>
+    <%= form_with url: destroy_user_session_path, method: :delete do %>
+    <%= submit_tag 'Se Déconnecter', class: 'logout' %>
+  <% end %>
   </div>
 </nav>

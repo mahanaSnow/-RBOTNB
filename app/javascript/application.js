@@ -6,3 +6,5 @@ import "bootstrap"
 import "custom/main"
 import "custom/card"
 import "custom/main"
+import Rails from "@rails/ujs";
+Rails.start();

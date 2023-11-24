@@ -2,21 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 25px;
+  padding: 25px 150px;
 }
-
-
 .custom-nav-logo, .custom-nav-links, .custom-nav-user {
   display: flex;
   align-items: center;
 }
 
-
 .custom-logo-link, .custom-nav-item {
   text-decoration: none;
   color: black;
   font-size: 16px;
-  margin: 0 10px;
+  margin: 0 20px;
   position: relative;
 }
 .custom-logo-link{
@@ -25,7 +22,7 @@
   text-decoration: none;
   color: black;
 }
-.custom-nav-item::after, .custom-logo-link::after {
+.custom-nav-item::after, .custom-nav-item::after {
   content: '';
   position: absolute;
   bottom: -5px;
@@ -42,8 +39,19 @@
 
 /* Style pour le bouton de déconnexion */
 .logout {
-  background-color: black;
-  color: white;
+  text-decoration: none;
+  color: rgb(235, 231, 231);
+  font-size: 16px;
+  margin: 0 20px;
+  position: relative;
   padding: 10px 15px;
+  background-color: rgb(26, 25, 25);
   border-radius: 5px;
+  border:none;
+  cursor: pointer;
+}
+
+.logout:hover::after {
+  width: 100%;
+  background-color: rgba(47, 45, 45, 0.777);
 }
